@@ -1,0 +1,59 @@
+﻿FUNCTION "AlarmsControl" : Void
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+   VAR_TEMP 
+      i : Int;
+   END_VAR
+
+
+BEGIN
+	IF "SimControl".TurnOnAlarms_1 = TRUE THEN
+	    "Alarms_IO".Alarm_1 := TRUE;
+	    "Alarms_IO".Alarm_2 := TRUE;
+	    "Alarms_IO".Alarm_3 := TRUE;
+	ELSE
+	    "Alarms_IO".Alarm_1 := FALSE;
+	    "Alarms_IO".Alarm_2 := FALSE;
+	    "Alarms_IO".Alarm_3 := FALSE;
+	END_IF;
+	IF "SimControl".TurnOnAlarms_2 = TRUE THEN
+	    "Alarms_IO".Alarm_4 := TRUE;
+	    "Alarms_IO".Alarm_5 := TRUE;
+	    "Alarms_IO".Alarm_6 := TRUE;
+	ELSE
+	    "Alarms_IO".Alarm_4 := FALSE;
+	    "Alarms_IO".Alarm_5 := FALSE;
+	    "Alarms_IO".Alarm_6 := FALSE;
+	END_IF;
+	IF "SimControl".TurnOnAlarms_3 = TRUE THEN
+	    "Alarms_IO".Alarm_7 := TRUE;
+	    "Alarms_IO".Alarm_8 := TRUE;
+	    "Alarms_IO".Alarm_9 := TRUE;
+	ELSE
+	    "Alarms_IO".Alarm_7 := FALSE;
+	    "Alarms_IO".Alarm_8 := FALSE;
+	    "Alarms_IO".Alarm_9 := FALSE;
+	END_IF;
+	
+	IF "EdgeData".COBOT_Running = FALSE THEN
+	    "SimControl".TurnOnAlarms_1 := FALSE;
+	    "SimControl".TurnOnAlarms_2 := FALSE;
+	    "SimControl".TurnOnAlarms_3 := FALSE;
+	END_IF;
+	
+	
+	IF "SimControl".TurnOnAlarms_1 = TRUE THEN
+	    "EdgeData".COBOT_NoAlarms := FALSE;
+	ELSIF "SimControl".TurnOnAlarms_2 = TRUE THEN
+	    "EdgeData".COBOT_NoAlarms := FALSE;
+	ELSIF "SimControl".TurnOnAlarms_3 = TRUE THEN
+	    "EdgeData".COBOT_NoAlarms := FALSE;
+	ELSE
+	    "EdgeData".COBOT_NoAlarms:= TRUE;
+	    "Alarms_IO".Alarm_10 := TRUE;
+	END_IF;
+	
+	
+	
+END_FUNCTION
+
