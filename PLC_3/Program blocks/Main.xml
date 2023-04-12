@@ -2,7 +2,7 @@
 <Document>
   <Engineering version="V17" />
   <DocumentInfo>
-    <Created>2023-04-12T12:45:14.9692437Z</Created>
+    <Created>2023-04-12T12:59:40.207934Z</Created>
     <ExportSetting>WithDefaults</ExportSetting>
     <InstalledProducts>
       <Product>
@@ -667,7 +667,9 @@
       </Symbol>
     </Access>
     <Part Name="Contact" UId="26" />
-    <Part Name="Contact" UId="27" />
+    <Part Name="Contact" UId="27">
+      <Negated Name="operand" />
+    </Part>
     <Part Name="TON" Version="1.0" UId="28">
       <Instance Scope="GlobalVariable" UId="29">
         <Component Name="TON_10" />
